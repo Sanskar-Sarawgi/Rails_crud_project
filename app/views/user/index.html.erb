@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each_with_index do |item,index| %>
+    <tr>
+      <th scope="row"><%=index +1 %></th>
+      <td><%= link_to  item.first , user_show_path(item) , class: "nav-link text-uppercase"%></td>
+      <td><%= link_to  item.last , user_show_path(item) , class: "nav-link text-uppercase"%></td>
+      <td><%= link_to  item.email , user_show_path(item) , class: "nav-link"%></td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>
+
+<%= button_to "Create User"  , user_new_path , class: "btn btn-success" , method: 'get'%>

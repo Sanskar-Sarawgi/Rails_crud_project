@@ -1,0 +1,5 @@
+<div ><h1 class="text-center">Fill Details Of User</h1></div>
+
+<%= form_with(model: @user, url: user_path(@user)) do |form| %>
+   <%= render 'form' ,user: @user ,form: form %>
+<%end%>

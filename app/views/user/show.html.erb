@@ -1,0 +1,28 @@
+<div class="position-relative vh-100">
+<div class="card position-absolute top-50 start-50 translate-middle" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @user.first%> <%= @user.last%></h5>
+    <p class="card-text"><%= @user.email%></p>
+  </div>
+  <ul class="list-group list-group-flush" style="list-style: none;">
+    <% @phone_no.each do |item| %>
+    <li><%= link_to item.number, phone_destroy_path(@user,item.id) , method: :delete, data: { confirm: 'Are you sure you want to delete '+item.number+' this no ?' } ,class:"list-group-item "%></li>
+    <%end%>
+  </ul>
+  <div class="card-body">
+  <%= form_with(model: @phone, url: phone_create_path(@user)) do |form| %>
+   <div class="input-group  mb-2">
+    <div class="field">
+      <%= form.label 'Add Number'  %>
+      <%= form.text_field :number ,class:"form-control" %>
+    </div>
+    <div class="actions">
+      <%= form.submit 'Add' ,class:"btn btn-outline-secondary"%>
+    </div>
+   </div>
+  <%= link_to  'Edit' , user_edited_path(@user)%>
+  <%end%>
+  <%= button_to  'Delete User', user_destroy_path(@user), method: :delete, data: { confirm: 'Are you sure?' } ,class:"card-link btn btn-danger" %>
+  </div>
+</div>
+</div>
