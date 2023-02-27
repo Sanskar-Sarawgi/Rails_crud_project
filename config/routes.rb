@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   get "user/new",to: "user#new" , as: 'user_new'
   get "user/:id",to: "user#show" , as: 'user_show'
   get "user",to: "user#index"
+
+  # we can use the standard routes or we can customize them according to out need
+
+  # resources :user do
+  #   resources :photo
+  # end
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

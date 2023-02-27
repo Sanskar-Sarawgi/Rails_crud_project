@@ -3,7 +3,9 @@ class UserController < ApplicationController
     before_action :set_user, only: %i[ show edit update destroy]
 
     def index
-        @users = User.all
+        # @users = User.all
+        @search = params[:search] == nil ? "" : params[:search];
+        @users = User.where("lower(first) LIKE lower(?)", "%#{params[:search]}%")
     end
     
     def show
